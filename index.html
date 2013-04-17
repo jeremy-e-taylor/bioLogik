@@ -2,18 +2,66 @@
 <html>
 
 <head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="jquery-1.9.1.js"></script>
 	<script>
-		function myFunction()
-		{
-			alert("Hello World!");
-		}
+	// use $(document).ready function to make sure that the code executes only after the document's
+    // DOM has been loaded into the browser.
+    $(document).ready(function ()
+    {
+        // when page1Link link is clicked, page1 shows, page2 hides
+        $(page1Link).bind("click", function ()
+        {
+            $(page1).show();
+            $(page2).hide();
+        });
+
+        // when page2Link link is clicked, page2 shows, page1 hides
+        $(page2Link).bind("click", function ()
+        {
+            $(page1).hide();
+            $(page2).show();
+        });
+    });
+
+    // ===================================
+    // SHOW/HIDE THE PANEL
+    // ===================================
+    $(document).ready(function()
+    {
+    	// When the header (flip) is clicked, toggle the body (panel).
+    	$("#flip").click(function()
+    	{
+    		$("#panel").slideToggle("fast");
+    	});
+    });
 	</script>
 </head>
 
 <body>
-	<h1>Welcome to bioLogik!</h1>
+	<h1>bioLogik</h1>
 
-	<button onclick="myFunction()">Try it!</button>
+    <ul>
+        <!-- href='#' is needed only to help the links look like links -->
+        <li><a id="page1Link" href="#">choose page1</a></li>
+        <li><a id="page2Link" href="#">choose page2</a></li>
+    </ul>
+
+    <!-- page 1 message colored in red -->
+    <div id="page1" style="font-size:40px;color:red" >This is page 1</div>
+
+    <!-- page 2 message colored in blue -->
+    <!-- in the beginning page2 is not visible (display set to 'none') -->
+    <div id="page2" style="display:none">
+    	<p style="font-size:40px;color:blue">This is page 2</p>
+    	<div id="flip">
+    		Click to slide the panel down or up
+    	</div>
+    	<div id="panel">
+    		Create your future!
+    	</div>
+    </div>
+
 </body>
 
 </html>
