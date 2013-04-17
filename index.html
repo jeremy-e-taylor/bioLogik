@@ -4,6 +4,33 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="jquery-1.9.1.js"></script>
+	<script src="phonegap.js"></script>
+
+	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDevideReady()
+		{
+			checkConnection();
+		}
+		function checkConnection()
+		{
+			var networkState = navigator.connection.type;
+
+			var states = {};
+			states[Connection.UNKNOWN]  = 'Unknown connection';
+			states[Connection.ETHERNET] = 'Ethernet connection';
+			states[Connection.WIFI]     = 'WiFi connection';
+			states[Connection.CELL_2G]  = 'Cell 2G connection';
+			states[Connection.CELL_3G]  = 'Cell 3G connection';
+			states[Connection.CELL_4G]  = 'Cell 4G connection';
+			states[Connection.CELL]     = 'Cell generic connection';
+			states[Connection.NONE]     = 'No network connection';
+
+			alert('Connection type: ' + states[networkState]);
+		}
+	</script>
+
 	<script>
 	// use $(document).ready function to make sure that the code executes only after the document's
     // DOM has been loaded into the browser.
@@ -48,12 +75,12 @@
     </ul>
 
     <!-- page 1 message colored in red -->
-    <div id="page1" style="font-size:40px;color:red" >This is page 1</div>
+    <div id="page1" style="font-size:40px;color:red" >A dialog box will report the network state.</div>
 
     <!-- page 2 message colored in blue -->
     <!-- in the beginning page2 is not visible (display set to 'none') -->
     <div id="page2" style="display:none">
-    	<p style="font-size:40px;color:blue">This is page 2</p>
+    	<p style="font-size:40px;color:blue">This is an example of using jQuery toggle.</p>
     	<div id="flip">
     		Click to slide the panel down or up
     	</div>
